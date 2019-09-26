@@ -45,11 +45,11 @@ pipeline {
             steps {
                 input 'Deploy to Production?'
                 milestone(1)
-                kubernetesDeploy{
-                    kubeconfigId: "kuber",
-                    configs: "kube-yaml",
+                kubernetesDeploy(
+                    kubeconfigId: 'kubeconfig',
+                    configs: 'kube-yaml',
                     enableConfigSubstitution: true
-                
+                )
             }
         }
     }

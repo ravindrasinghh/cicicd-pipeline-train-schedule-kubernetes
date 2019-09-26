@@ -1,0 +1,21 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: train-schedule-deployment
+  labels:
+    app: train-schedule
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: train-schedule
+  template:
+    metadata:
+      labels:
+        app: train-schedule
+    spec:
+      containers:
+      - image: $DOCKER_IMAGE_NAME:$BUILD_NUMBER
+        name: train-schedule
+        ports:
+        - containerPort: 8080

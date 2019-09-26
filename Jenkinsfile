@@ -43,8 +43,7 @@ pipeline {
                 branch 'master'
             }
             steps {
-                input 'Deploy to Production?'
-                milestone(1)
+                echo "checking"
                 kubernetesDeploy(
                     kubeconfigId: 'kubeconfig',
                     configs: 'kube-yaml',

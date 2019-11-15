@@ -25,13 +25,13 @@ pipeline {
                 }
             }
         }
-        stage('Push Docker Image') {
+            stage('Push Docker Image') {
             when {
                 branch 'master'
             }
             steps {
                 script {
-                    docker.withRegistry('https://registry.hub.docker.com', 'docker-hub') {
+                        docker.withRegistry('https://006378141167.dkr.ecr.eu-west-1.amazonaws.com/ravindrasingh6969/myapp', 'ecr:eu-west-1:gce-veryme-vodafone-dev') {
                         app.push("${env.BUILD_NUMBER}")
                         app.push("latest")
                     }
